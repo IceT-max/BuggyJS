@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 52" width="36" height="52">
+  <!-- ombra sotto la macchina -->
+  <ellipse cx="18" cy="48" rx="17" ry="6" fill="rgba(0,0,0,0.22)"/>
+
+  <!-- ruota anteriore sinistra -->
+  <ellipse cx="5"  cy="11" rx="5.5" ry="8" fill="#161616"/>
+  <ellipse cx="5"  cy="9"  rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="5"  cy="13" rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="5"  cy="11" rx="3"   ry="5" fill="#b9b9be"/>
+  <ellipse cx="5"  cy="11" rx="1.5" ry="2" fill="#5a5a64"/>
+
+  <!-- ruota anteriore destra -->
+  <ellipse cx="31" cy="11" rx="5.5" ry="8" fill="#161616"/>
+  <ellipse cx="31" cy="9"  rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="31" cy="13" rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="31" cy="11" rx="3"   ry="5" fill="#b9b9be"/>
+  <ellipse cx="31" cy="11" rx="1.5" ry="2" fill="#5a5a64"/>
+
+  <!-- ruota posteriore sinistra -->
+  <ellipse cx="5"  cy="41" rx="5.5" ry="8" fill="#161616"/>
+  <ellipse cx="5"  cy="39" rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="5"  cy="43" rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="5"  cy="41" rx="3"   ry="5" fill="#b9b9be"/>
+  <ellipse cx="5"  cy="41" rx="1.5" ry="2" fill="#5a5a64"/>
+
+  <!-- ruota posteriore destra -->
+  <ellipse cx="31" cy="41" rx="5.5" ry="8" fill="#161616"/>
+  <ellipse cx="31" cy="39" rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="31" cy="43" rx="4"   ry="2" fill="#303030"/>
+  <ellipse cx="31" cy="41" rx="3"   ry="5" fill="#b9b9be"/>
+  <ellipse cx="31" cy="41" rx="1.5" ry="2" fill="#5a5a64"/>
+
+  <!-- scocca principale (ottagono) -->
+  <polygon points="8,2 28,2 36,11 36,41 29,50 7,50 0,41 0,11"
+           fill="#dcb937" stroke="rgba(0,0,0,0.43)" stroke-width="1"/>
+
+  <!-- pannello anteriore (highlight) -->
+  <polygon points="8,2 28,2 29,11 7,11" fill="#f0cc5a"/>
+
+  <!-- pannello posteriore (scuro) -->
+  <polygon points="8,41 28,41 29,50 7,50" fill="#9a7a18"/>
+
+  <!-- parabrezza -->
+  <polygon points="9,11 27,11 26,22 10,22" fill="#4682c8"/>
+  <ellipse cx="14" cy="14" rx="5" ry="2.5" fill="rgba(180,220,255,0.43)"/>
+
+  <!-- roll-bar centrale -->
+  <rect x="11" y="22" width="14" height="8" fill="#1c1c21" rx="1"/>
+
+  <!-- sedile pilota -->
+  <polygon points="10,30 26,30 27,41 9,41" fill="#3264a5"/>
+
+  <!-- scarichi laterali -->
+  <rect x="-3" y="13" width="4" height="5" fill="#9a7a2e" rx="1"/>
+  <rect x="35" y="13" width="4" height="5" fill="#9a7a2e" rx="1"/>
+
+  <!-- fari anteriori -->
+  <ellipse cx="11" cy="3"  rx="4" ry="2.5" fill="#fffcb9"/>
+  <ellipse cx="25" cy="3"  rx="4" ry="2.5" fill="#fffcb9"/>
+
+  <!-- luci di coda -->
+  <ellipse cx="11" cy="49" rx="3.5" ry="2" fill="#d21414"/>
+  <ellipse cx="25" cy="49" rx="3.5" ry="2" fill="#d21414"/>
+</svg>

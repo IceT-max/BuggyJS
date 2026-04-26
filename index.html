@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>BuggyBoy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="game-container"></div>
+  <div id="hint">Frecce / WASD: guida &nbsp;|&nbsp; Su: accelera &nbsp;|&nbsp; Giù: frena &nbsp;|&nbsp; 1-4: inizia con difficoltà</div>
+
+  <!-- PixiJS 8 -->
+  <script src="https://cdn.jsdelivr.net/npm/pixi.js@8/dist/pixi.min.js"></script>
+  <!-- ZzFX + ZzFXM -->
+  <script src="js/libs/zzfx.js"></script>
+  <script src="js/libs/zzfxm.js"></script>
+
+  <!-- Game modules (ordine: dipendenze prima) -->
+  <script src="js/constants.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/highscore.js"></script>
+  <script src="js/road.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/obstacles.js"></script>
+  <script src="js/entities.js"></script>
+  <script src="js/hud.js"></script>
+  <script src="js/screens.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
