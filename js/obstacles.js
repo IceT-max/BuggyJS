@@ -11,7 +11,7 @@ BB.Obstacle = class {
     const base = OBS_SIZES[type];
     this._sz = wScale === 1 ? base : { w: base.w * wScale, h: base.h };
 
-    this.sprite = new PIXI.Sprite(textures[_obsKey(type)]);
+    this.sprite = new PIXI.Sprite(textures[_obsKey(type, wScale)]);
     this.sprite.anchor.set(0.5);
     this.sprite.width  = this._sz.w;
     this.sprite.height = this._sz.h;
@@ -28,7 +28,9 @@ BB.Obstacle = class {
   }
 };
 
-function _obsKey(type) {
+function _obsKey(type, wScale = 1) {
+  if (type === 1 && wScale === 2) return 'log_m';
+  if (type === 1 && wScale === 3) return 'log_l';
   return ['rock', 'log', 'barrel', 'puddle', 'oil'][type];
 }
 

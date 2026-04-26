@@ -19,6 +19,8 @@
     buggy:      SVG_BASE + 'buggy.svg',
     rock:       SVG_BASE + 'rock.svg',
     log:        SVG_BASE + 'log.svg',
+    log_m:      SVG_BASE + 'log_m.svg',
+    log_l:      SVG_BASE + 'log_l.svg',
     barrel:     SVG_BASE + 'barrel.svg',
     puddle:     SVG_BASE + 'puddle.svg',
     oil:        SVG_BASE + 'oil.svg',
