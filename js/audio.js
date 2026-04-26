@@ -1,85 +1,41 @@
 'use strict';
 
-// ─── SONG ZzFXM (musica di sottofondo, stile arcade racing) ──────────────────
-// Formato: [instruments, patterns, sequence, bpm]
-// Ogni nota: [instrument_1based, semitone_offset_da_freq_base]
-const _SONG = [
-  // Instruments: parametri ZzFX (senza il volume iniziale)
-  [
-    // 0: lead synth - onda quadra con vibrato leggero
-    [, 0, 523, .02, .08, .15, 1, 1.5, 0, 0, 0, 0, 0, 0, 5],
-    // 1: basso - onda dente di sega, profondo
-    [, 0, 131, .04, .12, .3, 3, 1, -1, 0, 0, 0, 0, 0],
-    // 2: hi-hat - rumore breve
-    [, 0, 1200, 0, 0, .04, 4, 1, 0, 0, 0, 0, 0, 8],
-  ],
-  // Patterns (ogni passo = 1/16 di nota a BPM 140)
-  [
-    // Pattern 0: 16 passi - melodia principale
-    [
-      // Lead [volume, pan, ...notes]
-      [1, 0,
-        [1, 0], [1, 4], [1, 7], [1, 4],   // C E G E
-        [1, 5], [1, 9], [1, 12],[1, 9],   // F A C' A
-        [1, 7], [1, 4], [1, 5], [1, 2],   // G E F D
-        [1, 0], 0, [1, 0], 0,             // C - C -
-      ],
-      // Bass [volume, pan, ...notes]
-      [.75, 0,
-        [2, 0], 0, [2, 0], 0,
-        [2, 5], 0, [2, 5], 0,
-        [2, 7], 0, [2, 7], 0,
-        [2, 0], 0, 0, 0,
-      ],
-      // Hi-hat [volume, pan, ...notes]
-      [.4, 0,
-        [3, 0], 0, [3, 0], 0,
-        [3, 0], 0, [3, 0], 0,
-        [3, 0], 0, [3, 0], 0,
-        [3, 0], 0, [3, 0], 0,
-      ],
-    ],
-    // Pattern 1: variazione
-    [
-      [1, 0,
-        [1, 7], [1, 9], [1, 12],[1, 9],
-        [1, 7], [1, 5], [1, 4], [1, 2],
-        [1, 0], [1, 2], [1, 4], [1, 5],
-        [1, 7], 0, [1, 7], 0,
-      ],
-      [.75, 0,
-        [2, 7], 0, [2, 7], 0,
-        [2, 5], 0, [2, 5], 0,
-        [2, 0], 0, [2, 0], 0,
-        [2, 7], 0, 0, 0,
-      ],
-      [.4, 0,
-        [3, 0], 0, [3, 0], 0,
-        [3, 0], 0, [3, 0], 0,
-        [3, 0], 0, [3, 0], 0,
-        [3, 0], 0, [3, 0], 0,
-      ],
-    ],
-  ],
-  // Sequence
-  [0, 0, 1, 0],
-  // BPM
-  140,
-];
-
-// ─── AUDIO SYSTEM ─────────────────────────────────────────────────────────────
 BB.Audio = class {
   constructor() {
     this._ctx      = null;
     this._engGain  = null;
     this._engOsc   = null;
     this._musicSrc = null;
-    this._musicBuf = null;
-    this._muted    = false;
+    this._musicActive = false;
+
+    this._bufMusic = null;
+    this._bufAcqua = null;
+    this._bufOlio  = null;
+
+    // Fetch MP3 in background (non serve AudioContext)
+    this._pMusic = fetch('sfx/dune_buggy.mp3').then(r => r.arrayBuffer()).catch(() => null);
+    this._pAcqua = fetch('sfx/acqua.mp3').then(r => r.arrayBuffer()).catch(() => null);
+    this._pOlio  = fetch('sfx/olio.mp3').then(r => r.arrayBuffer()).catch(() => null);
   }
 
   _init() {
-    if (!this._ctx) this._ctx = zzfxX; // riusa il contesto di ZzFX
+    if (this._ctx) return;
+    this._ctx = zzfxX;
+    const dec = p => p.then(ab => ab ? this._ctx.decodeAudioData(ab) : null).catch(() => null);
+    this._pMusic = dec(this._pMusic); this._pMusic.then(b => { this._bufMusic = b; });
+    this._pAcqua = dec(this._pAcqua); this._pAcqua.then(b => { this._bufAcqua = b; });
+    this._pOlio  = dec(this._pOlio);  this._pOlio.then(b  => { this._bufOlio  = b;  });
+  }
+
+  _playBuf(buf, vol = 0.7) {
+    if (!buf || !this._ctx) return;
+    const src = this._ctx.createBufferSource();
+    src.buffer = buf;
+    const g = this._ctx.createGain();
+    g.gain.value = vol;
+    src.connect(g);
+    g.connect(this._ctx.destination);
+    src.start();
   }
 
   // ─── ENGINE ────────────────────────────────────────────────────────────────
@@ -119,49 +75,45 @@ BB.Audio = class {
     if (this._engGain) { this._engGain.disconnect(); this._engGain = null; }
   }
 
-  // ─── MUSICA DI SOTTOFONDO (ZzFXM) ─────────────────────────────────────────
+  // ─── MUSICA (MP3) ──────────────────────────────────────────────────────────
   startMusic() {
     this._init();
     this.stopMusic();
-    try {
-      if (!this._musicBuf) {
-        const [l, r] = zzfxM(..._SONG);
-        const buf = this._ctx.createBuffer(2, l.length, zzfxR);
-        buf.getChannelData(0).set(l);
-        buf.getChannelData(1).set(r);
-        this._musicBuf = buf;
-      }
+    this._musicActive = true;
+    this._pMusic.then(buf => {
+      if (!buf || !this._musicActive) return;
       this._musicSrc = this._ctx.createBufferSource();
-      this._musicSrc.buffer = this._musicBuf;
+      this._musicSrc.buffer = buf;
       this._musicSrc.loop = true;
       const gain = this._ctx.createGain();
-      gain.gain.value = 0.25;
+      gain.gain.value = 0.4;
       this._musicSrc.connect(gain);
       gain.connect(this._ctx.destination);
       this._musicSrc.start();
-    } catch (e) {
-      // ZzFXM non disponibile o errore: continua senza musica
-    }
+    });
   }
 
   stopMusic() {
+    this._musicActive = false;
     if (this._musicSrc) {
       try { this._musicSrc.stop(); } catch (e) {}
       this._musicSrc = null;
     }
   }
 
-  // ─── EFFETTI ZzFX ─────────────────────────────────────────────────────────
+  // ─── EFFETTI ───────────────────────────────────────────────────────────────
   playCrash() {
     zzfx(1.5, .1, 60,  0, .05, .4, 4, 1, 0, 0, 0, 0, 0, 9, 0, .3, 0, .8, .2);
     zzfx(.8,  .1, 80,  0, .02, .5, 3, 1, -.1);
   }
 
   playSlide() {
+    if (this._bufOlio) { this._playBuf(this._bufOlio, 0.7); return; }
     zzfx(.7, .1, 180, 0, .05, .5, 0, 1, -.18, 0, 0, 0, 0, 0, 0, 0, 0, .6, .1);
   }
 
   playSplash() {
+    if (this._bufAcqua) { this._playBuf(this._bufAcqua, 0.7); return; }
     zzfx(.6, .1, 350, 0, .03, .25, 0, 1, 0, 0, 0, 0, 0, 5, 0, 0, 0, .5, .05);
   }
 
