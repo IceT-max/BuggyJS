@@ -119,10 +119,12 @@ BB.Engine = class {
 
     if (this.dist >= this.nextObs) {
       const { l, r } = this.road.edgesAt(-60);
-      const x  = l + 22 + rng() * (r - l - 44);
       const rv = rng();
       const t  = rv < .22 ? 0 : rv < .44 ? 1 : rv < .55 ? 2 : rv < .78 ? 3 : 4;
-      const ob = new BB.Obstacle(x, -60, t, this._textures);
+      const wScale = t === 1 ? ([1, 1, 2, 3][Math.floor(rng() * 4)]) : 1;
+      const hw  = (BB.OBS_SIZES[t].w * wScale) / 2 + 5;
+      const x   = l + hw + rng() * Math.max(0, r - l - hw * 2);
+      const ob = new BB.Obstacle(x, -60, t, this._textures, wScale);
       this.obs.push(ob);
       this._worldLayer.addChild(ob.sprite);
       const gap = Math.max(70, 240 - this.dist * 0.0015);

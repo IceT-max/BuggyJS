@@ -40,24 +40,36 @@ BB.HUD = class {
     this.container.addChild(this._timer);
 
     // velocità km/h
-    this._speed = _txt('0 km/h', 12, false, 0x8888ff);
-    this._speed.anchor.set(1, 1);
-    this._speed.x = W - 10; this._speed.y = H - 20;
+    this._speed = _txt('0 km/h', 18, false, _WHITE);
+    this._speed.x = 10; this._speed.y = 36;
     this.container.addChild(this._speed);
 
     // difficoltà
-    this._diff = _txt('', 12, false, 0x888888);
+    this._diff = _txt('', 18, false, _WHITE);
     this._diff.anchor.set(0.5, 1);
     this._diff.x = W / 2; this._diff.y = H - 20;
     this.container.addChild(this._diff);
 
-    // bandierine bonus
+    // bandierine bonus — pannello sfondo
+    const bfBg = new PIXI.Graphics();
+    bfBg.rect(W - 112, 36, 106, 118).fill({ color: 0x000000, alpha: 0.45 });
+    this.container.addChild(bfBg);
+
     this._bfTexts = [];
     const tierCols = [0xe03232, 0xe0e0e0, 0x9b37c8, 0x2d69dc, 0x23af3c];
     for (let i = 0; i < 5; i++) {
-      const t = _txt('☆☆☆☆☆', 18, true, tierCols[i]);
+      const t = new PIXI.Text({
+        text: '☆☆☆☆☆',
+        style: {
+          fontFamily: _MONO,
+          fontSize:   18,
+          fontWeight: 'bold',
+          fill:       tierCols[i],
+          stroke:     { color: 0x000000, width: 3 },
+        },
+      });
       t.anchor.set(1, 0);
-      t.x = W - 10; t.y = 40 + i * 22;
+      t.x = W - 14; t.y = 40 + i * 22;
       this.container.addChild(t);
       this._bfTexts.push(t);
     }
