@@ -1,3 +1,4 @@
+(function () {
 'use strict';
 const { W, H, MAX_SPD, BF, PH } = BB;
 
@@ -149,3 +150,5 @@ BB.HUD = class {
     }
   }
 };
+
+})();

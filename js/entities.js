@@ -1,3 +1,4 @@
+(function () {
 'use strict';
 const { W, BF } = BB;
 
@@ -91,3 +92,5 @@ BB.Bumper = class {
     this.sprite.y  = this.y;
   }
 };
+
+})();

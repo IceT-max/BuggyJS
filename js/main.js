@@ -1,7 +1,7 @@
 'use strict';
-const { ST, PH, W, H } = BB;
 
 (async () => {
+  const { ST, PH, W, H } = BB;
   // ─── PIXI APP ─────────────────────────────────────────────────────────────
   const app = new PIXI.Application();
   await app.init({
@@ -15,20 +15,18 @@ const { ST, PH, W, H } = BB;
 
   // ─── CARICA ASSETS SVG ────────────────────────────────────────────────────
   const SVG_BASE = 'svg/';
-  const assetDefs = [
-    { alias: 'buggy',      src: SVG_BASE + 'buggy.svg'      },
-    { alias: 'rock',       src: SVG_BASE + 'rock.svg'       },
-    { alias: 'log',        src: SVG_BASE + 'log.svg'        },
-    { alias: 'barrel',     src: SVG_BASE + 'barrel.svg'     },
-    { alias: 'puddle',     src: SVG_BASE + 'puddle.svg'     },
-    { alias: 'oil',        src: SVG_BASE + 'oil.svg'        },
-    { alias: 'bumper',     src: SVG_BASE + 'bumper.svg'     },
-    { alias: 'flag',       src: SVG_BASE + 'flag.svg'       },
-    { alias: 'bonus_flag', src: SVG_BASE + 'bonus_flag.svg' },
-    { alias: 'particle',   src: SVG_BASE + 'particle.svg'   },
-  ];
-
-  PIXI.Assets.addBundle('game', assetDefs);
+  PIXI.Assets.addBundle('game', {
+    buggy:      SVG_BASE + 'buggy.svg',
+    rock:       SVG_BASE + 'rock.svg',
+    log:        SVG_BASE + 'log.svg',
+    barrel:     SVG_BASE + 'barrel.svg',
+    puddle:     SVG_BASE + 'puddle.svg',
+    oil:        SVG_BASE + 'oil.svg',
+    bumper:     SVG_BASE + 'bumper.svg',
+    flag:       SVG_BASE + 'flag.svg',
+    bonus_flag: SVG_BASE + 'bonus_flag.svg',
+    particle:   SVG_BASE + 'particle.svg',
+  });
   const textures = await PIXI.Assets.loadBundle('game');
 
   // ─── STATO APPLICAZIONE ───────────────────────────────────────────────────

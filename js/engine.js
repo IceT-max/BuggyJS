@@ -1,3 +1,4 @@
+(function () {
 'use strict';
 const { ST, PH, BF, W, H } = BB;
 
@@ -247,3 +248,5 @@ BB.Engine = class {
     this.player.draw(this.phase === PH.CRASH);
   }
 };
+
+})();

@@ -1,3 +1,4 @@
+(function () {
 'use strict';
 const { W, H, PL_W, PL_H, MAX_SPD } = BB;
 
@@ -208,3 +209,5 @@ BB.Player = class {
     }
   }
 };
+
+})();

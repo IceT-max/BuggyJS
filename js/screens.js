@@ -1,3 +1,4 @@
+(function () {
 'use strict';
 const { W, H } = BB;
 
@@ -153,3 +154,5 @@ BB.NameScreen = class {
 
   hide() { this.container.visible = false; }
 };
+
+})();

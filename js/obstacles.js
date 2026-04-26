@@ -1,3 +1,4 @@
+(function () {
 'use strict';
 const { OBS_SIZES } = BB;
 
@@ -29,3 +30,5 @@ BB.Obstacle = class {
 function _obsKey(type) {
   return ['rock', 'log', 'barrel', 'puddle', 'oil'][type];
 }
+
+})();
