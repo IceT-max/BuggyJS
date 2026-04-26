@@ -11,11 +11,13 @@ BB.Audio = class {
     this._bufMusic = null;
     this._bufAcqua = null;
     this._bufOlio  = null;
+    this._bufCrash = null;
 
     // Fetch MP3 in background (non serve AudioContext)
     this._pMusic = fetch('sfx/dune_buggy.mp3').then(r => r.arrayBuffer()).catch(() => null);
     this._pAcqua = fetch('sfx/acqua.mp3').then(r => r.arrayBuffer()).catch(() => null);
     this._pOlio  = fetch('sfx/olio.mp3').then(r => r.arrayBuffer()).catch(() => null);
+    this._pCrash = fetch('sfx/crash.mp3').then(r => r.arrayBuffer()).catch(() => null);
   }
 
   _init() {
@@ -25,6 +27,7 @@ BB.Audio = class {
     this._pMusic = dec(this._pMusic); this._pMusic.then(b => { this._bufMusic = b; });
     this._pAcqua = dec(this._pAcqua); this._pAcqua.then(b => { this._bufAcqua = b; });
     this._pOlio  = dec(this._pOlio);  this._pOlio.then(b  => { this._bufOlio  = b;  });
+    this._pCrash = dec(this._pCrash); this._pCrash.then(b => { this._bufCrash = b; });
   }
 
   _playBuf(buf, vol = 0.7) {
@@ -103,6 +106,7 @@ BB.Audio = class {
 
   // ─── EFFETTI ───────────────────────────────────────────────────────────────
   playCrash() {
+    if (this._bufCrash) { this._playBuf(this._bufCrash, 1.0); return; }
     zzfx(1.5, .1, 60,  0, .05, .4, 4, 1, 0, 0, 0, 0, 0, 9, 0, .3, 0, .8, .2);
     zzfx(.8,  .1, 80,  0, .02, .5, 3, 1, -.1);
   }
