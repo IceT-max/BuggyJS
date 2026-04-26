@@ -55,8 +55,9 @@ BB.HUD = class {
     this._bfTexts = [];
     const tierCols = [0xe03232, 0xe0e0e0, 0x9b37c8, 0x2d69dc, 0x23af3c];
     for (let i = 0; i < 5; i++) {
-      const t = _txt('☆☆☆☆☆', 12, true, tierCols[i]);
-      t.x = 10; t.y = H - 90 + i * 16;
+      const t = _txt('☆☆☆☆☆', 18, true, tierCols[i]);
+      t.anchor.set(1, 0);
+      t.x = W - 10; t.y = 40 + i * 22;
       this.container.addChild(t);
       this._bfTexts.push(t);
     }

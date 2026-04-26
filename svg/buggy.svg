@@ -1,64 +1,97 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 52" width="36" height="52">
-  <!-- ombra sotto la macchina -->
-  <ellipse cx="18" cy="48" rx="17" ry="6" fill="rgba(0,0,0,0.22)"/>
 
-  <!-- ruota anteriore sinistra -->
-  <ellipse cx="5"  cy="11" rx="5.5" ry="8" fill="#161616"/>
-  <ellipse cx="5"  cy="9"  rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="5"  cy="13" rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="5"  cy="11" rx="3"   ry="5" fill="#b9b9be"/>
-  <ellipse cx="5"  cy="11" rx="1.5" ry="2" fill="#5a5a64"/>
+  <!-- ombra -->
+  <ellipse cx="18" cy="49" rx="16" ry="4" fill="rgba(0,0,0,0.28)"/>
 
-  <!-- ruota anteriore destra -->
-  <ellipse cx="31" cy="11" rx="5.5" ry="8" fill="#161616"/>
-  <ellipse cx="31" cy="9"  rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="31" cy="13" rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="31" cy="11" rx="3"   ry="5" fill="#b9b9be"/>
-  <ellipse cx="31" cy="11" rx="1.5" ry="2" fill="#5a5a64"/>
+  <!-- ═══ RUOTE ═══ -->
+  <!-- ant. sx -->
+  <ellipse cx="4"  cy="11" rx="5.5" ry="8.5" fill="#111"/>
+  <ellipse cx="4"  cy="11" rx="4"   ry="7"   fill="#252525"/>
+  <ellipse cx="4"  cy="11" rx="2.6" ry="4.6" fill="#c8c8d2"/>
+  <circle  cx="4"  cy="7.4"  r="0.75" fill="#888"/>
+  <circle  cx="4"  cy="14.6" r="0.75" fill="#888"/>
+  <circle  cx="1.3" cy="11"  r="0.75" fill="#888"/>
+  <circle  cx="6.7" cy="11"  r="0.75" fill="#888"/>
+  <circle  cx="4"  cy="11"  r="1.3"  fill="#5a5a68"/>
 
-  <!-- ruota posteriore sinistra -->
-  <ellipse cx="5"  cy="41" rx="5.5" ry="8" fill="#161616"/>
-  <ellipse cx="5"  cy="39" rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="5"  cy="43" rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="5"  cy="41" rx="3"   ry="5" fill="#b9b9be"/>
-  <ellipse cx="5"  cy="41" rx="1.5" ry="2" fill="#5a5a64"/>
+  <!-- ant. dx -->
+  <ellipse cx="32" cy="11" rx="5.5" ry="8.5" fill="#111"/>
+  <ellipse cx="32" cy="11" rx="4"   ry="7"   fill="#252525"/>
+  <ellipse cx="32" cy="11" rx="2.6" ry="4.6" fill="#c8c8d2"/>
+  <circle  cx="32" cy="7.4"  r="0.75" fill="#888"/>
+  <circle  cx="32" cy="14.6" r="0.75" fill="#888"/>
+  <circle  cx="29.3" cy="11" r="0.75" fill="#888"/>
+  <circle  cx="34.7" cy="11" r="0.75" fill="#888"/>
+  <circle  cx="32" cy="11"  r="1.3"  fill="#5a5a68"/>
 
-  <!-- ruota posteriore destra -->
-  <ellipse cx="31" cy="41" rx="5.5" ry="8" fill="#161616"/>
-  <ellipse cx="31" cy="39" rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="31" cy="43" rx="4"   ry="2" fill="#303030"/>
-  <ellipse cx="31" cy="41" rx="3"   ry="5" fill="#b9b9be"/>
-  <ellipse cx="31" cy="41" rx="1.5" ry="2" fill="#5a5a64"/>
+  <!-- post. sx -->
+  <ellipse cx="4"  cy="41" rx="5.5" ry="8.5" fill="#111"/>
+  <ellipse cx="4"  cy="41" rx="4"   ry="7"   fill="#252525"/>
+  <ellipse cx="4"  cy="41" rx="2.6" ry="4.6" fill="#c8c8d2"/>
+  <circle  cx="4"  cy="37.4" r="0.75" fill="#888"/>
+  <circle  cx="4"  cy="44.6" r="0.75" fill="#888"/>
+  <circle  cx="1.3" cy="41"  r="0.75" fill="#888"/>
+  <circle  cx="6.7" cy="41"  r="0.75" fill="#888"/>
+  <circle  cx="4"  cy="41"  r="1.3"  fill="#5a5a68"/>
 
-  <!-- scocca principale (ottagono) -->
-  <polygon points="8,2 28,2 36,11 36,41 29,50 7,50 0,41 0,11"
-           fill="#dcb937" stroke="rgba(0,0,0,0.43)" stroke-width="1"/>
+  <!-- post. dx -->
+  <ellipse cx="32" cy="41" rx="5.5" ry="8.5" fill="#111"/>
+  <ellipse cx="32" cy="41" rx="4"   ry="7"   fill="#252525"/>
+  <ellipse cx="32" cy="41" rx="2.6" ry="4.6" fill="#c8c8d2"/>
+  <circle  cx="32" cy="37.4" r="0.75" fill="#888"/>
+  <circle  cx="32" cy="44.6" r="0.75" fill="#888"/>
+  <circle  cx="29.3" cy="41" r="0.75" fill="#888"/>
+  <circle  cx="34.7" cy="41" r="0.75" fill="#888"/>
+  <circle  cx="32" cy="41"  r="1.3"  fill="#5a5a68"/>
 
-  <!-- pannello anteriore (highlight) -->
-  <polygon points="8,2 28,2 29,11 7,11" fill="#f0cc5a"/>
+  <!-- ═══ SCOCCA ═══ -->
+  <polygon points="9,2 27,2 35,10 35,42 27,50 9,50 1,42 1,10"
+           fill="#dcb937" stroke="#8a6a00" stroke-width="0.8"/>
 
-  <!-- pannello posteriore (scuro) -->
-  <polygon points="8,41 28,41 29,50 7,50" fill="#9a7a18"/>
+  <!-- pannello anteriore chiaro -->
+  <polygon points="9,2 27,2 28,10 8,10" fill="#f0cc50"/>
 
-  <!-- parabrezza -->
-  <polygon points="9,11 27,11 26,22 10,22" fill="#4682c8"/>
-  <ellipse cx="14" cy="14" rx="5" ry="2.5" fill="rgba(180,220,255,0.43)"/>
+  <!-- pannello posteriore scuro -->
+  <polygon points="9,42 27,42 28,50 8,50" fill="#8a6800"/>
 
-  <!-- roll-bar centrale -->
-  <rect x="11" y="22" width="14" height="8" fill="#1c1c21" rx="1"/>
+  <!-- striscia racing centrale -->
+  <polygon points="15,2 21,2 22,50 14,50" fill="rgba(255,255,255,0.18)"/>
 
-  <!-- sedile pilota -->
-  <polygon points="10,30 26,30 27,41 9,41" fill="#3264a5"/>
+  <!-- ═══ SCARICHI ═══ -->
+  <rect x="-2.5" y="14" width="4" height="5" fill="#7a6020" rx="1"/>
+  <rect x="34.5" y="14" width="4" height="5" fill="#7a6020" rx="1"/>
+  <rect x="-2.5" y="15" width="4" height="1" fill="rgba(255,160,0,0.4)" rx="0.5"/>
+  <rect x="34.5" y="15" width="4" height="1" fill="rgba(255,160,0,0.4)" rx="0.5"/>
 
-  <!-- scarichi laterali -->
-  <rect x="-3" y="13" width="4" height="5" fill="#9a7a2e" rx="1"/>
-  <rect x="35" y="13" width="4" height="5" fill="#9a7a2e" rx="1"/>
+  <!-- ═══ PARABREZZA ═══ -->
+  <polygon points="10,10 26,10 25,21 11,21" fill="#3c78d8"/>
+  <!-- riflesso -->
+  <polygon points="12,11 19,11 18,16 13,16" fill="rgba(200,235,255,0.4)"/>
+  <polygon points="20,11 24,11 23,15 21,15" fill="rgba(200,235,255,0.25)"/>
 
-  <!-- fari anteriori -->
-  <ellipse cx="11" cy="3"  rx="4" ry="2.5" fill="#fffcb9"/>
-  <ellipse cx="25" cy="3"  rx="4" ry="2.5" fill="#fffcb9"/>
+  <!-- ═══ ROLL CAGE ═══ -->
+  <rect x="10" y="21" width="16" height="7" fill="#18181e" rx="1.5"/>
+  <line x1="14" y1="21" x2="14" y2="28" stroke="#383845" stroke-width="1.2"/>
+  <line x1="22" y1="21" x2="22" y2="28" stroke="#383845" stroke-width="1.2"/>
+  <line x1="10" y1="24.5" x2="26" y2="24.5" stroke="#282832" stroke-width="0.8"/>
 
-  <!-- luci di coda -->
-  <ellipse cx="11" cy="49" rx="3.5" ry="2" fill="#d21414"/>
-  <ellipse cx="25" cy="49" rx="3.5" ry="2" fill="#d21414"/>
+  <!-- ═══ SEDILE ═══ -->
+  <polygon points="11,28 25,28 26,42 10,42" fill="#2256b4"/>
+  <polygon points="15,29 21,29 22,37 14,37" fill="#1a3e8c"/>
+  <!-- profilo sedile -->
+  <line x1="11" y1="33" x2="25" y2="33" stroke="#1a3e8c" stroke-width="0.8"/>
+
+  <!-- ═══ FARI ANTERIORI ═══ -->
+  <ellipse cx="12" cy="3"  rx="4.5" ry="2.2" fill="#fffce0"/>
+  <ellipse cx="24" cy="3"  rx="4.5" ry="2.2" fill="#fffce0"/>
+  <!-- lente interna -->
+  <ellipse cx="12" cy="3"  rx="2.8" ry="1.4" fill="#ffffff"/>
+  <ellipse cx="24" cy="3"  rx="2.8" ry="1.4" fill="#ffffff"/>
+
+  <!-- ═══ LUCI DI CODA ═══ -->
+  <ellipse cx="12" cy="49" rx="3.8" ry="1.9" fill="#c80000"/>
+  <ellipse cx="24" cy="49" rx="3.8" ry="1.9" fill="#c80000"/>
+  <ellipse cx="12" cy="49" rx="2.2" ry="1.1" fill="#ff4444"/>
+  <ellipse cx="24" cy="49" rx="2.2" ry="1.1" fill="#ff4444"/>
+
 </svg>

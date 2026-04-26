@@ -84,6 +84,8 @@ BB.Engine = class {
           this._aud.startEngine();
           if (this.cpExpired) this.cpTimer = this.cpLimit;
           this.cpExpired = false;
+        } else {
+          this._aud.stopMusic();
         }
       }
       return;

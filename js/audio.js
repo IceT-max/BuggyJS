@@ -89,7 +89,7 @@ BB.Audio = class {
       this._musicSrc.buffer = buf;
       this._musicSrc.loop = true;
       const gain = this._ctx.createGain();
-      gain.gain.value = 0.4;
+      gain.gain.value = 0.25;
       this._musicSrc.connect(gain);
       gain.connect(this._ctx.destination);
       this._musicSrc.start();
